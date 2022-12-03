@@ -1,0 +1,5 @@
+export const HOME = '/'
+export const LOGIN = '/login'
+export const PRIVATE = '/private'
+export const DASHBOARD = '/private/dashboard'
+export const NOT_FOUND_404 = '/not-found-404'
