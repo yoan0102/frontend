@@ -1,15 +1,18 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { LOGIN } from '../config/routes/paths';
+import DashboardLayout from '../../views/dashboard/layouts/DashboardLayout';
+import { HOME } from '../config/routes/paths';
 import { useAuthContent } from '../context/authContext';
 
 const PrivateRoute = () => {
   const { isAuthenticated } = useAuthContent()
 
-  if (!isAuthenticated) return <Navigate to={LOGIN} />
+  if (!isAuthenticated) return <Navigate to={HOME} />
 
   return (
     <div>
-      <Outlet />
+      <DashboardLayout>
+        <Outlet />
+      </DashboardLayout>
     </div>
   )
 }
