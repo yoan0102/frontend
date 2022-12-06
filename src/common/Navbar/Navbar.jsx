@@ -13,19 +13,18 @@ const Navbar = () => {
   return (
     <nav className='navbar navbar-expand-lg sticky-top bg-light shadow-sm '>
       <div className='container-fluid'>
-        <a
+        <div
           className='navbar-brand'
-          href='#'
         >
           <h1 className='d-inline-block m-3'>
             <Link
-              to=''
+              to='/'
               className='text'
             >
               OCI
             </Link>
           </h1>
-        </a>
+        </div>
 
         <button
           className='navbar-toggler'
@@ -88,10 +87,10 @@ const Navbar = () => {
           </ul>
 
           <div className='icong justify-content-right '>
-            <a className='d-flex m-3 gap-3'>
+            <div className='d-flex m-3 gap-3'>
               <Link
                 className='nav-link link text-success text-primary display-4'
-                to=''
+                to='/'
               >
                 <i className='inav bi-question-lg'></i>
               </Link>
@@ -105,11 +104,11 @@ const Navbar = () => {
 
               <Link
                 className='nav-link link text-success text-primary display-4'
-                to=''
+                to='/'
               >
                 <i className='inav bi bi-box-arrow-in-right'></i>
               </Link>
-            </a>
+            </div>
           </div>
         </div>
       </div>
