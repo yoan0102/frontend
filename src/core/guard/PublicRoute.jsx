@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { PRIVATE } from '../config/routes/paths';
-import { useAuthContent } from '../context/authContext';
+import { useAuthContext } from '../context/authContext';
 
 const PublicRoute = () => {
-  const { isAuthenticated } = useAuthContent()
+  const { isAuthenticated } = useAuthContext()
 
   if (isAuthenticated) return <Navigate to={PRIVATE} />
 

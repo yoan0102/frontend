@@ -1,0 +1,16 @@
+.footer{
+ background-color: #09292E;
+ height:40px;
+ text-align: center;
+    a {
+      color: rgb(106, 104, 104);
+      text-decoration: none;
+  
+      &:hover,
+      &:focus {
+        color: gainsboro;
+        text-decoration:dashed;
+      }
+    }
+  
+}
