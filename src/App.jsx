@@ -7,7 +7,7 @@ import { AuthContextProvider } from './core/context/authContext'
 import PrivateRoute from './core/guard/PrivateROute'
 import PublicRoute from './core/guard/PublicRoute'
 
-import { Circulo } from './views/dashboard/Circulo'
+import { CirculosScreen } from './views/dashboard/Circulos'
 import { Estadisticas } from './views/dashboard/Estadisticas'
 import { GeneralList } from './views/dashboard/GeneralList'
 import { NewSubmision } from './views/dashboard/NewSubmision'
@@ -28,7 +28,7 @@ function App() {
             <Route index element={<Navigate to={GENERAL_LIST} />} />
             <Route path={GENERAL_LIST} element={<GeneralList />} />
             <Route path={NEW_SUBMISISON} element={<NewSubmision />} />
-            <Route path={CIRCULOS} element={<Circulo />} />
+            <Route path={CIRCULOS} element={<CirculosScreen />} />
             <Route path={ESTADISTICAS} element={<Estadisticas />} />
             <Route path={ORGANISMOS} element={<Organismos />} />
             <Route path={USERS} element={<Users />} />
