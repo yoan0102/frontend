@@ -4,6 +4,7 @@ import { useOrganismoContext } from '../../context/OrganismoContext';
 import DataTable from 'react-data-table-component'
 
 import './styles/OrganismoList.scss';
+import OrganismoForm from '../forms/OrganismoForm';
 
 const OrganismoList = () => {
 	const { data } = useOrganismoContext()
@@ -92,9 +93,9 @@ const OrganismoList = () => {
 				<div className='table-responsibe'>
 					<div className="mb-3 d-flex justify-content-between gap-3">
 						<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
-						<button className='btn btn-primary customize-btn'>
+						<a href='#form' className='btn btn-primary customize-btn'>
 							<i className="bi bi-plus-lg"></i>
-						</button>
+						</a>
 					</div>
 
 
@@ -117,6 +118,7 @@ const OrganismoList = () => {
 						noDataComponent='No hay resultados'
 					/>
 				</div>
+				<OrganismoForm />
 			</div>
 
 		</section>

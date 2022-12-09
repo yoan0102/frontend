@@ -1,13 +1,20 @@
+import PropTypes from 'prop-types'
 import './styles/Button.scss';
 
-const Button = () => {
+const Button = ({ icon, severity, type = 'button' }) => {
   return (
     <div className="cont-button">
-      <button className="btn-bubble">
-        <span>Bubble</span>
+      <button type={type} className={`btn-bubble ${severity}`} >
+        {icon}
       </button>
-    </div>
+    </div >
   );
 };
+
+Button.propTypes = {
+  icon: PropTypes.node,
+  severity: PropTypes.string,
+  type: PropTypes.string
+}
 
 export default Button;

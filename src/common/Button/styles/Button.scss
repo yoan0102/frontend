@@ -1,7 +1,8 @@
-@use '../../../styles/varaibles';
+@use '../../../styles/variables';
 .btn-bubble {
 	background-color: transparent;
-	border: 2px solid varaibles.$colorPrimario;
+	// border: 2px solid variables.$colorPrimario;
+	border: none;
 	border-radius: 0.4em;
 	padding: 0.5em 2em;
 	cursor: pointer;
@@ -15,7 +16,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: varaibles.$colorPrimario;
+		background-color: white;
 		opacity: 0.2;
 		position: absolute;
 		border-radius: 50px;
@@ -29,8 +30,19 @@
 		border-radius: 0;
 	}
 	span {
-		color: varaibles.$colorPrimario;
+		color: variables.$colorPrimario;
 		position: relative;
 		z-index: 2;
 	}
+}
+
+.primary {
+	background-color: variables.$colorPrimario;
+}
+.secondary {
+	background-color: variables.$colorPrimario;
+}
+
+.gray {
+	background-color: variables.$colorGray;
 }
