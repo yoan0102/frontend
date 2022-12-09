@@ -13,10 +13,7 @@ export const organismosApiCreate = async (organismo) => {
 
 
 export const organismosApiDelete = async (organismoId) => {
-  const organismoCreated = await baseAxios.delete('/organismos', {
-    params: {
-      organismoId
-    }
-  })
-  return organismoCreated.data
+  const organismoDeleted = await baseAxios.delete(`/organismos/${organismoId}`
+  )
+  return organismoDeleted.status
 }

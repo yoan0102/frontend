@@ -7,14 +7,13 @@ import './styles/OrganismoList.scss';
 import OrganismoForm from '../forms/OrganismoForm';
 
 const OrganismoList = () => {
-	const { data } = useOrganismoContext()
+	const { data, deleteOrganismo } = useOrganismoContext()
 
 	const [organismos, setOrganismos] = useState([])
 	const [search, setSearch] = useState('')
 
 	useEffect(() => {
 		setOrganismos(data)
-
 		return function cleanUp() {
 		}
 	}, [data])
@@ -46,6 +45,10 @@ const OrganismoList = () => {
 		searchElements()
 	}
 
+	const deleteOrganismoId = async (organismoId) => {
+		await deleteOrganismo.mutate(organismoId)
+
+	}
 
 	const columns = [
 		{
@@ -74,7 +77,7 @@ const OrganismoList = () => {
 					>
 						<i className="bi bi-pencil-square"></i>
 					</button>
-					<button className='btn btn-danger btn-sm'>
+					<button onClick={() => deleteOrganismoId(row._id)} className='btn btn-danger btn-sm'>
 						<i className="bi bi-trash-fill"></i>
 					</button>
 				</div>

@@ -1,7 +1,7 @@
 
 import { useMutation, useQuery, QueryClient } from '@tanstack/react-query';
 import { createContext, useContext, useMemo } from 'react';
-import { organismosApi, organismosApiCreate } from '../service/organismo.service';
+import { organismosApi, organismosApiCreate, organismosApiDelete } from '../service/organismo.service';
 import PropTypes from 'prop-types'
 
 
@@ -19,9 +19,18 @@ export const OrganismoProvider = ({ children }) => {
     }
   })
 
+  const deleteOrganismo = useMutation({
+    mutationFn: organismosApiDelete,
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['organismos'] })
+    },
+  })
+
   const value = {
     data,
-    addOrganismo
+    addOrganismo,
+    deleteOrganismo,
   }
   return (
     <OrganismoContext.Provider value={value}>
