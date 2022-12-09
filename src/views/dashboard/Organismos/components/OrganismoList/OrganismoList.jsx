@@ -53,7 +53,6 @@ const OrganismoList = () => {
 			selector: row => row.priorizado,
 			cell: row => <input type="checkbox" name="" id="" checked={row} />,
 			sortable: true,
-
 		},
 		{
 			name: 'Actions',
@@ -90,14 +89,14 @@ const OrganismoList = () => {
 					<DataTable
 						columns={columns}
 						data={organismos}
-						title='Listado de Planillas'
+						// title='Listado de Planillas'
 						pagination
+						highlightOnHover
 						paginationComponentOptions={
 							{
 								rowsPerPageText: 'Filas por pagina',
 								rangeSeparatorText: 'de',
 								selectAllRowsItem: true,
-								expandableRows: true,
 								selectAllRowsItemText: 'Todos'
 							}
 						}
