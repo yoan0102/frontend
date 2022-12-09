@@ -14,18 +14,27 @@ const OrganismoList = () => {
 	useEffect(() => {
 		setOrganismos(data)
 		return function cleanUp() {
-
 		}
 	}, [])
+
+	useEffect(() => {
+		if (search.trim() === '') {
+			setOrganismos(data)
+		}
+		return function cleanUp() {
+
+		}
+	}, [search])
 
 	const searchElements = () => {
 		const elements = organismos.filter((item) => {
 			if (
-				item.name.includes(search) ||
-				item.id.includes(search)
+				item.name.includes(search) || item.description.includes(search)
 			) {
 				return item
 			}
+
+			return undefined
 		})
 		setOrganismos(elements)
 	}
@@ -51,11 +60,11 @@ const OrganismoList = () => {
 		{
 			name: 'Priorizado',
 			selector: row => row.priorizado,
-			cell: row => <input type="checkbox" name="" id="" checked={row} />,
+			cell: row => row ? <i className="fs-5 text-success  bi bi-check2-square"></i> : <i className="fs-5 text-secondary bi bi-app"></i>,
 			sortable: true,
 		},
 		{
-			name: 'Actions',
+			name: '',
 			cell: row => (
 				<div className='d-flex gap-1 justify-content-center'>
 					<button className="btn btn-warning text-white btn-sm"
@@ -71,8 +80,7 @@ const OrganismoList = () => {
 			,
 			allowOverflow: true,
 			button: true,
-			width: '56px',
-			grow: 10
+			width: '100px',
 		},
 	]
 
@@ -82,9 +90,13 @@ const OrganismoList = () => {
 			<h2 className='text-center text-primary mt-5 p-5'>Listado de Planillas</h2>
 			<div className="container">
 				<div className='table-responsibe'>
-					<div className="mb-3">
-						<input type="text" className="form-control" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
+					<div className="mb-3 d-flex justify-content-between gap-3">
+						<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
+						<button className='btn btn-primary customize-btn'>
+							<i className="bi bi-plus-lg"></i>
+						</button>
 					</div>
+
 
 					<DataTable
 						columns={columns}
