@@ -14,9 +14,10 @@ const OrganismoList = () => {
 
 	useEffect(() => {
 		setOrganismos(data)
+
 		return function cleanUp() {
 		}
-	}, [])
+	}, [data])
 
 	useEffect(() => {
 		if (search.trim() === '') {
@@ -61,7 +62,7 @@ const OrganismoList = () => {
 		{
 			name: 'Priorizado',
 			selector: row => row.priorizado,
-			cell: row => row ? <i className="fs-5 text-success  bi bi-check2-square"></i> : <i className="fs-5 text-secondary bi bi-app"></i>,
+			cell: row => row.priorizado ? <i className="fs-5 text-success  bi bi-check2-square"></i> : <i className="fs-5 text-secondary bi bi-app"></i>,
 			sortable: true,
 		},
 		{

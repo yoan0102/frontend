@@ -19,10 +19,10 @@ export const OrganismoProvider = ({ children }) => {
     }
   })
 
-  const value = useMemo(() => ({
+  const value = {
     data,
     addOrganismo
-  }), [data, addOrganismo])
+  }
   return (
     <OrganismoContext.Provider value={value}>
       {children}
