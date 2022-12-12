@@ -7,20 +7,20 @@ import './styles/OrganismoList.scss';
 import OrganismoForm from '../forms/OrganismoForm';
 
 const OrganismoList = () => {
-	const { data, deleteOrganismo } = useOrganismoContext()
+	const { organismos, deleteOrganismo } = useOrganismoContext()
 
-	const [organismos, setOrganismos] = useState([])
+	const [organismosLocal, setOrganismosLocal] = useState([])
 	const [search, setSearch] = useState('')
 
 	useEffect(() => {
-		setOrganismos(data)
+		setOrganismosLocal(organismos)
 		return function cleanUp() {
 		}
-	}, [data])
+	}, [organismos])
 
 	useEffect(() => {
 		if (search.trim() === '') {
-			setOrganismos(data)
+			setOrganismosLocal(organismos)
 		}
 		return function cleanUp() {
 
@@ -28,7 +28,7 @@ const OrganismoList = () => {
 	}, [search])
 
 	const searchElements = () => {
-		const elements = organismos.filter((item) => {
+		const elements = organismosLocal.filter((item) => {
 			if (
 				item.name.includes(search) || item.description.includes(search)
 			) {
@@ -37,7 +37,7 @@ const OrganismoList = () => {
 
 			return undefined
 		})
-		setOrganismos(elements)
+		setOrganismosLocal(elements)
 	}
 
 	const handleInputChange = (event) => {
@@ -105,7 +105,7 @@ const OrganismoList = () => {
 
 					<DataTable
 						columns={columns}
-						data={organismos}
+						data={organismosLocal}
 						// title='Listado de Planillas'
 						pagination
 						highlightOnHover

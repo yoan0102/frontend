@@ -1,16 +1,19 @@
-
-import { useMutation, useQuery, QueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createContext, useContext, useMemo } from 'react';
-import { organismosApi, organismosApiCreate, organismosApiDelete } from '../service/organismo.service';
+import { organismosApi, organismosApiCreate, organismosApiDelete, organismosApiId } from '../service/organismo.service';
 import PropTypes from 'prop-types'
 
 
 
 const OrganismoContext = createContext()
-const queryClient = new QueryClient();
+
 
 export const OrganismoProvider = ({ children }) => {
-  const { data } = useQuery({ queryKey: ['organismos'], queryFn: organismosApi })
+  const { data: organismos } = useQuery({ queryKey: ['organismos'], queryFn: organismosApi })
+
+  // const { data: organismo } = useQuery({ queryKey: ['organismos', 'userId'], queryFn: organismosApiId })
+
+  const queryClient = useQueryClient();
 
   const addOrganismo = useMutation({
     mutationFn: organismosApiCreate,
@@ -22,16 +25,24 @@ export const OrganismoProvider = ({ children }) => {
   const deleteOrganismo = useMutation({
     mutationFn: organismosApiDelete,
     onSuccess: () => {
-      // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['organismos'] })
     },
   })
 
-  const value = {
-    data,
+  const updateOrganismo = useMutation({
+    mutationFn: organismosApiDelete,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['organismos'] })
+    },
+  })
+
+  const value = useMemo(() => ({
+    organismos,
+    // organismo,
     addOrganismo,
     deleteOrganismo,
-  }
+    updateOrganismo,
+  }), [organismos])
   return (
     <OrganismoContext.Provider value={value}>
       {children}
@@ -40,7 +51,7 @@ export const OrganismoProvider = ({ children }) => {
 }
 
 OrganismoProvider.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.node
 }
 
 
