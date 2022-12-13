@@ -1,1 +1,1 @@
-export { default as CirculoList } from './CirculoList';
+export { default as CirculoList} from './CirculoList';
