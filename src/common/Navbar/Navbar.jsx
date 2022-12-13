@@ -14,14 +14,14 @@ const Navbar = () => {
     <nav className='navbar navbar-expand-lg sticky-top bg-light shadow-sm '>
       <div className='container-fluid'>
         <div
-          className='navbar-brand'
-        >
-          <h1 className='d-inline-block m-3'>
+          className='navbar-brand' 
+        > 
+          <h1 className='d-inline-block m-3 '>
             <Link
               to='/'
               className='text'
-            >
-              OCI
+            > <img src="/src/assets/images/logo.png" />
+               OCI
             </Link>
           </h1>
         </div>
@@ -40,16 +40,18 @@ const Navbar = () => {
         </button>
 
         <div
-          className='collapse navbar-collapse justify-content-center'
+          className='collapse navbar-collapse justify-content-end'
           id='navbarNav'
         >
-          <ul className='navbar-nav align-center gap-5'>
+          <ul className='navbar-nav align-center gap-2'>
             <li className='nav-item '>
               <NavLink
-                className='nav-link link text-dark'
+                className='nav-link link text-dark '
                 to={NEW_SUBMISISON}
               >
-                Nueva Solicitud
+                <i className="inav bi bi-plus-lg"></i>
+
+                {/* Nueva Solicitud */}
               </NavLink>
             </li>
             <li className='nav-item'>
@@ -57,7 +59,8 @@ const Navbar = () => {
                 className='nav-link link text-dark '
                 to={GENERAL_LIST}
               >
-                Listado de planillas
+                <i className="inav bi bi-files"></i>
+                {/* Listado de planillas */}
               </NavLink>
             </li>
             <li className='nav-item'>
@@ -65,7 +68,8 @@ const Navbar = () => {
                 className='nav-link link text-dark'
                 to={ESTADISTICAS}
               >
-                Estadisticas
+               <i className="inav bi bi-bar-chart-fill"></i>
+             {/*   Estadisticas */}
               </NavLink>
             </li>
             <li className='nav-item'>
@@ -73,7 +77,8 @@ const Navbar = () => {
                 className='nav-link link text-dark'
                 to={CIRCULOS}
               >
-                Circulos
+                <i className="inav bi bi-house-gear"></i>
+                {/* Circulos */}
               </NavLink>
             </li>
             <li className='nav-item'>
@@ -81,35 +86,35 @@ const Navbar = () => {
                 className='nav-link link text-dark'
                 to={ORGANISMOS}
               >
-                Organismos
+                <i className="inav bi bi-building-gear"></i>
+               {/*  Organismos */}
               </NavLink>
             </li>
-          </ul>
+             
+            <li className='nav-item'>
+              <NavLink
+                className='nav-link link text-success text-primary'
+                to={USERS}
+              >
+                <i className="inav bi bi-person-fill-gear" aria-label='users'></i>
+              </NavLink>
+              </li>
 
-          <div className='icong justify-content-right '>
-            <div className='d-flex m-3 gap-3'>
               <Link
-                className='nav-link link text-success text-primary display-4'
+                className='nav-link link text-success text-primary '
                 to='/'
               >
                 <i className='inav bi-question-lg'></i>
               </Link>
 
-              <NavLink
-                className='nav-link link text-success text-primary display-4'
-                to={USERS}
-              >
-                <i className="inav bi bi-person-fill-gear"></i>
-              </NavLink>
-
               <Link
-                className='nav-link link text-success text-primary display-4'
+                className='nav-link link text-success text-primary '
                 to='/'
               >
                 <i className='inav bi bi-box-arrow-in-right'></i>
               </Link>
-            </div>
-          </div>
+
+              </ul>
         </div>
       </div>
     </nav>

@@ -4,16 +4,34 @@
 }
 
 i.inav {
-	font-size: 1.5rem;
-	color: #0c3d4a;
-	&:hover,
-	&:focus {
-		color: #056a86;
-	}
+		height: 70px;
+		width: 70px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #0c3d4a;
+		font-size: 1.6rem;
+		cursor: pointer;
+		transition: 0.4s all;
+
+		&:focus {
+			color: #056a86;
+		}
+		&:hover{
+			color: #fff;
+			background-color:#819ea5!important;
+			border-radius:5px;
+			opacity:0.8;
+			transform: scale(1.2)
+		}
+
 }
 
+
 .active {
-	border-bottom: 2px solid #0c3d4a;
+	i.inav{color: rgb(239, 239, 239);}
+	height: 80px;
+	background-color: #819ea5;
 }
 
 h1 {
@@ -31,3 +49,4 @@ h1 {
 		}
 	}
 }
+
