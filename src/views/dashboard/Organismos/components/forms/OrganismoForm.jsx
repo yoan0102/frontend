@@ -32,6 +32,7 @@ function OrganismoForm() {
         <div className="card-header"><h3>Nuevo Organismo</h3></div>
         <div className="card-body">
           <form onSubmit={form.handleSubmit}>
+            
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-md-3 mb-3">
