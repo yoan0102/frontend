@@ -1,4 +1,5 @@
 import { useFormik } from "formik"
+import PropTypes from 'prop-types'
 
 import { useNavigate } from "react-router-dom"
 
@@ -6,15 +7,15 @@ import { useOrganismoContext } from "../../context/OrganismoContext"
 import Button from "../../../../../common/Button/Button"
 import { ORGANISMOS } from "../../../../../core/config/routes/paths"
 
-function OrganismoForm() {
+function OrganismoForm({ organismo }) {
 
   const { addOrganismo } = useOrganismoContext()
   const navigate = useNavigate()
   const form = useFormik({
     initialValues: {
-      name: '',
-      description: '',
-      priorizado: false
+      name: organismo ? organismo?.name : '',
+      description: organismo ? organismo?.name : '',
+      priorizado: organismo ? organismo?.name : ''
     },
     onSubmit: async (values, { resetForm }) => {
       await addOrganismo.mutate({
@@ -75,10 +76,14 @@ function OrganismoForm() {
 
           </form>
         </div>
-      </div>
+      </div >
     </div >
 
   )
+}
+
+OrganismoForm.propTypes = {
+  organismo: PropTypes.object
 }
 
 export default OrganismoForm

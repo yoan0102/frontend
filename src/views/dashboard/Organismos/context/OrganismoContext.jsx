@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createContext, useContext, useMemo } from 'react';
-import { organismosApi, organismosApiCreate, organismosApiDelete, organismosApiId } from '../service/organismo.service';
+import { organismosApi, organismosApiCreate, organismosApiDelete } from '../service/organismo.service';
 import PropTypes from 'prop-types'
 
 
@@ -10,8 +10,6 @@ const OrganismoContext = createContext()
 
 export const OrganismoProvider = ({ children }) => {
   const { data: organismos } = useQuery({ queryKey: ['organismos'], queryFn: organismosApi })
-
-  // const { data: organismo } = useQuery({ queryKey: ['organismos', 'userId'], queryFn: organismosApiId })
 
   const queryClient = useQueryClient();
 
@@ -38,7 +36,6 @@ export const OrganismoProvider = ({ children }) => {
 
   const value = useMemo(() => ({
     organismos,
-    // organismo,
     addOrganismo,
     deleteOrganismo,
     updateOrganismo,

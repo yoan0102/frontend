@@ -11,6 +11,7 @@ const OrganismoList = () => {
 
 	const [organismosLocal, setOrganismosLocal] = useState([])
 	const [search, setSearch] = useState('')
+	const [organismoUpdate, setorganismoUpdate] = useState(null)
 
 	useEffect(() => {
 		setOrganismosLocal(organismos)
@@ -50,6 +51,11 @@ const OrganismoList = () => {
 
 	}
 
+	const editOrganismo = async (organismoId) => {
+		const organismo = await organismos.filter(item => item._id === organismoId)
+		setorganismoUpdate(organismo[0])
+	}
+
 	const columns = [
 		{
 			name: 'Nombre',
@@ -72,11 +78,11 @@ const OrganismoList = () => {
 			name: '',
 			cell: row => (
 				<div className='d-flex gap-1 justify-content-center'>
-					<button className="btn btn-warning text-white btn-sm"
-						onClick={() => alert('CLik')}
+					<a href='#form' className="btn btn-warning text-white btn-sm"
+						onClick={() => editOrganismo(row._id)}
 					>
 						<i className="bi bi-pencil-square"></i>
-					</button>
+					</a>
 					<button onClick={() => deleteOrganismoId(row._id)} className='btn btn-danger btn-sm'>
 						<i className="bi bi-trash-fill"></i>
 					</button>
@@ -122,7 +128,7 @@ const OrganismoList = () => {
 						noDataComponent='No hay resultados'
 					/>
 				</div>
-				<OrganismoForm />
+				<OrganismoForm organismo={organismoUpdate} />
 			</div>
 
 		</section>

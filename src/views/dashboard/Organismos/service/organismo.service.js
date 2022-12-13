@@ -6,10 +6,6 @@ export const organismosApi = async () => {
   return organismos.data
 }
 
-export const organismosApiId = async (userId) => {
-  const organismo = await baseAxios.get(`/organismos/${userId}`)
-  return organismo.data
-}
 
 export const organismosApiCreate = async (organismo) => {
   const organismoCreated = await baseAxios.post('/organismos', organismo)
