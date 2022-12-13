@@ -92,7 +92,7 @@ const OrganismoList = () => {
 	return (
 		<section className='organismolist'>
 
-			<h2 className='text-center text-primary mt-5 p-5'>Listado de Planillas</h2>
+			<h2 className='text-center text-primary mt-5 p-5'>Listado de Organismos</h2>
 			<div className="container">
 				<div className='table-responsibe'>
 					<div className="mb-3 d-flex justify-content-between gap-3">
