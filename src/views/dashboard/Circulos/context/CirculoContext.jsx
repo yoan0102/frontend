@@ -27,11 +27,11 @@ export const CirculoProvider = ({ children }) => {
     },
   })
 
-  const value = {
+  const value = useMemo(() => ({
     data,
     addCirculo,
     deleteCirculo,
-  }
+  }), [data])
   return (
     <CirculoContext.Provider value={value}>
       {children}
