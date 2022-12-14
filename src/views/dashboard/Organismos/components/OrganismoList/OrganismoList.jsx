@@ -106,7 +106,7 @@ const OrganismoList = () => {
 					<DataTable
 						columns={columns}
 						data={organismos}
-						// title='Listado de Planillas'
+						// title='Listado de Organismos'
 						pagination
 						highlightOnHover
 						paginationComponentOptions={

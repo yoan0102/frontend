@@ -111,7 +111,7 @@ const UserList = () => {
 					<DataTable
 						columns={columns}
 						data={users}
-						// title='Listado de Planillas'
+						// title='Listado de usuarios'
 						pagination
 						highlightOnHover
 						paginationComponentOptions={
