@@ -1,5 +1,5 @@
 
-import { useMutation, useQuery, QueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createContext, useContext, useMemo } from 'react';
 import { circulosApi, circulosApiCreate, circulosApiDelete } from '../services/circulo.service';
 import PropTypes from 'prop-types'
@@ -7,9 +7,11 @@ import PropTypes from 'prop-types'
 
 
 const CirculoContext = createContext()
-const queryClient = new QueryClient();
 
 export const CirculoProvider = ({ children }) => {
+
+  const queryClient = useQueryClient();
+
   const { data } = useQuery({ queryKey: ['circulos'], queryFn: circulosApi })
 
   const addCirculo = useMutation({
