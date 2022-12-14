@@ -90,10 +90,10 @@ const OrganismoList = () => {
 	]
 
 	return (
-		<section className='organismolist'>
+		<section className='organismolist '>
 
-			<h2 className='text-center text-primary mt-5 p-5'>Listado de Organismos</h2>
 			<div className="container">
+			<h2 className='text-center text-primary p-5'>Listado de Organismos</h2>
 				<div className='table-responsibe'>
 					<div className="mb-3 d-flex justify-content-between gap-3">
 						<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useCirculoContext } from '../../context/CirculoContext';
 
-import DataTable from 'react-data-table-component'
+import DataTable from 'react-data-table-component';
 
 import './styles/CirculoList.scss';
 import CirculoForm from '../forms/CirculoForm';

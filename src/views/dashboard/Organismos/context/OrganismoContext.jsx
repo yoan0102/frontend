@@ -1,6 +1,6 @@
 
 import { useMutation, useQuery, QueryClient } from '@tanstack/react-query';
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, /* useMemo */ } from 'react';
 import { organismosApi, organismosApiCreate, organismosApiDelete } from '../service/organismo.service';
 import PropTypes from 'prop-types'
 

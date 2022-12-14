@@ -11,13 +11,13 @@ function CirculoForm() {
 	const navigate = useNavigate();
 	const form = useFormik({
 		initialValues: {
-			no: '',
+			no: 0,
 			name: '',
-			normed_capacity2: '',
-			normed_capacity3: '',
-			normed_capacity4: '',
-			normed_capacity5: '',
-			normed_capacity6: '',
+			normed_capacity2: 0,
+			normed_capacity3: 0,
+			normed_capacity4: 0,
+			normed_capacity5: 0,
+			normed_capacity6: 0,
 			/*       latong: [], */
 		},
 		onSubmit: async (values, { resetForm }) => {
