@@ -157,8 +157,11 @@ const GeneralList = () => {
 	]
 
 	return <section className='generallist'>
-		<h2 className='text-center text-secondary p-5'>Listado de Planillas</h2>
-		<div className="container">
+
+			<div className='container mt-3 '>
+			<h2 className='text-center text-secondary mt-5 p-3'>Listado General de Planillas</h2>
+			<div className='card '>
+			<div className='card-body'>
 			<div className='table-responsibe'>
 				<div className="mb-3">
 					<input type="text" className="form-control" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
@@ -181,6 +184,8 @@ const GeneralList = () => {
 					noDataComponent='No hay resultados'
 				/>
 			</div>
+		</div>
+		</div>
 		</div>
 	</section >
 };

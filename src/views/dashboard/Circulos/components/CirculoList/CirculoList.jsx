@@ -111,8 +111,11 @@ const CirculoList = () => {
 	return (
 		<section className='circulolist'>
 
-			<h2 className='text-center text-secondary p-5'>Listado de Circulos</h2>
-			<div className="container">
+
+			<div className='container mt-3'>
+			<h2 className='text-center text-secondary mt-5 p-3'>Listado de Circulos</h2>
+			<div className='card '>
+			<div className='card-body'>
 				<div className='table-responsibe'>
 					<div className="mb-3 d-flex justify-content-between gap-3">
 						<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
@@ -141,7 +144,9 @@ const CirculoList = () => {
 						noDataComponent='No hay resultados'
 					/>
 				</div>
-				<CirculoForm />
+			</div>
+			</div>
+			<CirculoForm />
 			</div>
 
 		</section>

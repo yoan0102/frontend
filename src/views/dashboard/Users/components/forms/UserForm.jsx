@@ -33,11 +33,9 @@ function UserForm() {
 			id='form'
 			className='container mt-3'
 		>
-			<div className='card'>
-				<div className='card-header'>
-					<h3>Nuevo Usuario</h3>
-				</div>
-				<div className='card-body'>
+		<h2 className='text-center text-secondary mt-5 p-3'>Nuevo Usuario</h2>
+		 <div className='card '>
+		 		<div className='card-body'>
 					<form onSubmit={form.handleSubmit}>
 
 

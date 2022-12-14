@@ -98,8 +98,10 @@ const OrganismoList = () => {
 	return (
 		<section className='organismolist '>
 
-			<div className="container">
-				<h2 className='text-center text-secondary p-5'>Listado de Organismos</h2>
+		<div className='container mt-3 '>
+			<h2 className='text-center text-secondary mt-5 p-3'>Listado de Organismos</h2>
+			<div className='card '>
+			<div className='card-body'>
 				<div className='table-responsibe'>
 					<div className="mb-3 d-flex justify-content-between gap-3">
 						<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
@@ -127,7 +129,9 @@ const OrganismoList = () => {
 						noDataComponent='No hay resultados'
 					/>
 				</div>
-				<OrganismoForm organismo={organismoUpdate} />
+			</div>
+			</div>
+			<OrganismoForm organismo={organismoUpdate} />
 			</div>
 
 		</section>

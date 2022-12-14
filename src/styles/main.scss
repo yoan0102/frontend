@@ -11,6 +11,11 @@ background-color: #36616c ;
 .container-main{
   background-color: #F8F9FA;
   margin-inline: 20px;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 20px
+}
+
+.card{
+  border: none;
+  box-shadow:0 .125rem .25rem rgba($black, .075);
 }

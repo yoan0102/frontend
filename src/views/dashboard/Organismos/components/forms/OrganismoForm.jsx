@@ -28,10 +28,13 @@ function OrganismoForm({ organismo }) {
 
 
   return (
-    <div id="form" className="container p-3">
-    <div className='card'>
-        <div className="card-header"><h3>Nuevo Organismo</h3></div>
-        <div className="card-body">
+		<div
+			id='form'
+			className='container mt-3'
+		>
+		<h2 className='text-center text-secondary mt-5 p-3'>Nuevo Organismo</h2>
+		 <div className='card '>
+		 		<div className='card-body'>
           <form onSubmit={form.handleSubmit}>
             
             <div className="form-group">

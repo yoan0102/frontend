@@ -52,11 +52,9 @@ function CirculoForm() {
 			id='form'
 			className='container mt-3'
 		>
-			<div className='card'>
-				<div className='card-header'>
-					<h2>Nuevo Circulo</h2>
-				</div>
-				<div className='card-body'>
+		<h2 className='text-center text-secondary mt-5 p-3'>Nuevo Circulo</h2>
+		 <div className='card '>
+		 		<div className='card-body'>
 					<form onSubmit={form.handleSubmit}>
 						<div className='form-group'>
 							<div className='row align-items-center'>
@@ -97,7 +95,7 @@ function CirculoForm() {
 							<div className='row align-items-center'>
 								<div className='col-md-10 mb-3'>
 
-									<MapContainer style={{ width: '100%', height: '500px' }} center={[21.72761, -82.834167]} zoom={10} scrollWheelZoom={false}>
+									<MapContainer style={{ width: '100%', height: '450px' }} center={[21.72761, -82.834167]} zoom={10} scrollWheelZoom={false}>
 										<TileLayer
 											attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 											url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -199,6 +197,7 @@ function CirculoForm() {
 					</form>
 				</div>
 			</div>
+
 		</div>
 	);
 }

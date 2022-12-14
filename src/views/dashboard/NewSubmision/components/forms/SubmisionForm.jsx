@@ -28,13 +28,11 @@ function SubmisionForm() {
 	return (
 		<div
 			id='form'
-			className='container'
+			className='container mt-3'
 		>
-			<div className='card'>
-				<div className='card-header'>
-					<h3>Nueva Solicitud</h3>
-				</div>
-				<div className='card-body'>
+		<h2 className='text-center text-secondary mt-5 p-3'>Nueva Solicitud</h2>
+		 <div className='card '>
+		 		<div className='card-body'>
 					<form onSubmit={form.handleSubmit}>
 						<div className='form-group '>
 							<div className='row align-items-center'>
