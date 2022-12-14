@@ -27,8 +27,8 @@ function OrganismoForm() {
 
 
   return (
-    <div id="form" className="container mt-3">
-      <div className="card">
+    <div id="form" className="container p-3">
+    <div className='card'>
         <div className="card-header"><h3>Nuevo Organismo</h3></div>
         <div className="card-body">
           <form onSubmit={form.handleSubmit}>

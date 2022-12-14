@@ -28,7 +28,7 @@ function SubmisionForm() {
 	return (
 		<div
 			id='form'
-			className='container mt-3'
+			className='container'
 		>
 			<div className='card'>
 				<div className='card-header'>

@@ -8,8 +8,10 @@ function DashboardLayout({ children }) {
   return (
 
     <>
+      <div className="main-b">
       <Navbar />
-      <div>{children}</div>
+      <div className='container-main'>{children}</div>
+      </div>
     </>
   )
 }

@@ -111,7 +111,7 @@ const CirculoList = () => {
 	return (
 		<section className='circulolist'>
 
-			<h2 className='text-center text-primary mt-5 p-5'>Listado de Circulos</h2>
+			<h2 className='text-center text-secondary p-5'>Listado de Circulos</h2>
 			<div className="container">
 				<div className='table-responsibe'>
 					<div className="mb-3 d-flex justify-content-between gap-3">
