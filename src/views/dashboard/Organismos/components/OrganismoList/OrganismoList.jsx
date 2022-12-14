@@ -7,20 +7,21 @@ import './styles/OrganismoList.scss';
 import OrganismoForm from '../forms/OrganismoForm';
 
 const OrganismoList = () => {
-	const { data, deleteOrganismo } = useOrganismoContext()
+	const { organismos, deleteOrganismo } = useOrganismoContext()
 
-	const [organismos, setOrganismos] = useState([])
+	const [organismosLocal, setOrganismosLocal] = useState([])
 	const [search, setSearch] = useState('')
+	const [organismoUpdate, setorganismoUpdate] = useState(null)
 
 	useEffect(() => {
-		setOrganismos(data)
+		setOrganismosLocal(organismos)
 		return function cleanUp() {
 		}
-	}, [data])
+	}, [organismos])
 
 	useEffect(() => {
 		if (search.trim() === '') {
-			setOrganismos(data)
+			setOrganismosLocal(organismos)
 		}
 		return function cleanUp() {
 
@@ -28,7 +29,7 @@ const OrganismoList = () => {
 	}, [search])
 
 	const searchElements = () => {
-		const elements = organismos.filter((item) => {
+		const elements = organismosLocal.filter((item) => {
 			if (
 				item.name.includes(search) || item.description.includes(search)
 			) {
@@ -37,7 +38,7 @@ const OrganismoList = () => {
 
 			return undefined
 		})
-		setOrganismos(elements)
+		setOrganismosLocal(elements)
 	}
 
 	const handleInputChange = (event) => {
@@ -48,6 +49,11 @@ const OrganismoList = () => {
 	const deleteOrganismoId = async (organismoId) => {
 		await deleteOrganismo.mutate(organismoId)
 
+	}
+
+	const editOrganismo = async (organismoId) => {
+		const organismo = await organismos.filter(item => item._id === organismoId)
+		setorganismoUpdate(organismo[0])
 	}
 
 	const columns = [
@@ -72,11 +78,11 @@ const OrganismoList = () => {
 			name: '',
 			cell: row => (
 				<div className='d-flex gap-1 justify-content-center'>
-					<button className="btn btn-warning text-white btn-sm"
-						onClick={() => alert('CLik')}
+					<a href='#form' className="btn btn-warning text-white btn-sm"
+						onClick={() => editOrganismo(row._id)}
 					>
 						<i className="bi bi-pencil-square"></i>
-					</button>
+					</a>
 					<button onClick={() => deleteOrganismoId(row._id)} className='btn btn-danger btn-sm'>
 						<i className="bi bi-trash-fill"></i>
 					</button>
@@ -105,8 +111,13 @@ const OrganismoList = () => {
 
 					<DataTable
 						columns={columns}
+<<<<<<< HEAD
 						data={organismos}
 						// title='Listado de Organismos'
+=======
+						data={organismosLocal}
+						// title='Listado de Planillas'
+>>>>>>> main
 						pagination
 						highlightOnHover
 						paginationComponentOptions={
@@ -122,7 +133,7 @@ const OrganismoList = () => {
 						noDataComponent='No hay resultados'
 					/>
 				</div>
-				<OrganismoForm />
+				<OrganismoForm organismo={organismoUpdate} />
 			</div>
 
 		</section>

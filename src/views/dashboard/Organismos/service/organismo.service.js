@@ -6,6 +6,7 @@ export const organismosApi = async () => {
   return organismos.data
 }
 
+
 export const organismosApiCreate = async (organismo) => {
   const organismoCreated = await baseAxios.post('/organismos', organismo)
   return organismoCreated.data
@@ -16,3 +17,11 @@ export const organismosApiDelete = async (organismoId) => {
   await baseAxios.delete(`/organismos/${organismoId}`
   )
 }
+
+export const organismosApiUpdate = async (organismo) => {
+  await baseAxios.patch(`/organismos/${organismo.id}`, {
+    ...organismo
+  }
+  )
+}
+
