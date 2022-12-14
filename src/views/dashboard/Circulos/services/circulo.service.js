@@ -16,3 +16,10 @@ export const circulosApiDelete = async (circuloId) => {
   await baseAxios.delete(`/circulos/${circuloId}`
   )
 }
+
+export const circulosApiUpdate = async (circulo) => {
+  await baseAxios.patch(`/circulos/${circulo.id}`, {
+    ...circulo
+  }
+  )
+}

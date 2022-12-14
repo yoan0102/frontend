@@ -7,20 +7,21 @@ import './styles/CirculoList.scss';
 import CirculoForm from '../forms/CirculoForm';
 
 const CirculoList = () => {
-	const { data, deleteCirculo } = useCirculoContext()
+	const { circulos, deleteCirculo } = useCirculoContext()
 
-	const [circulos, setCirculos] = useState([])
+	const [circulosLocal, setCirculosLocal] = useState([])
 	const [search, setSearch] = useState('')
+	const [circuloUpdate, setcirculoUpdate] = useState(null)
 
 	useEffect(() => {
-		setCirculos(data)
+		setCirculosLocal(circulos)
 		return function cleanUp() {
 		}
-	}, [data])
+	}, [circulos])
 
 	useEffect(() => {
 		if (search.trim() === '') {
-			setCirculos(data)
+			setCirculosLocal(circulos)
 		}
 		return function cleanUp() {
 
@@ -28,7 +29,7 @@ const CirculoList = () => {
 	}, [search])
 
 	const searchElements = () => {
-		const elements = circulos.filter((item) => {
+		const elements = circulosLocal.filter((item) => {
 			if (
 				item.no.includes(search) || item.name.includes(search)
 			) {
@@ -37,7 +38,7 @@ const CirculoList = () => {
 
 			return undefined
 		})
-		setCirculos(elements)
+		setCirculosLocal(elements)
 	}
 
 	const handleInputChange = (event) => {
@@ -48,6 +49,11 @@ const CirculoList = () => {
 	const deleteCirculoId = async (circuloId) => {
 		await deleteCirculo.mutate(circuloId)
 
+	}
+
+	const editCirculo = async (circuloId) => {
+		const circulo = await circulos.filter(item => item._id === circuloId)
+		setcirculoUpdate(circulo[0])
 	}
 
 	const columns = [
@@ -91,11 +97,11 @@ const CirculoList = () => {
 			name: '',
 			cell: row => (
 				<div className='d-flex gap-1 justify-content-center'>
-					<button className="btn btn-warning text-white btn-sm"
-						onClick={() => alert('CLik')}
+					<a href='#form' className="btn btn-warning text-white btn-sm"
+						onClick={() => editCirculo(row._id)}
 					>
 						<i className="bi bi-pencil-square"></i>
-					</button>
+					</a>
 					<button onClick={() => deleteCirculoId(row._id)} className='btn btn-danger btn-sm'>
 						<i className="bi bi-trash-fill"></i>
 					</button>
@@ -127,8 +133,7 @@ const CirculoList = () => {
 
 					<DataTable
 						columns={columns}
-						data={circulos}
-						// title='Listado de Circulos'
+						data={circulosLocal}
 						pagination
 						highlightOnHover
 						paginationComponentOptions={
@@ -146,7 +151,7 @@ const CirculoList = () => {
 				</div>
 			</div>
 			</div>
-			<CirculoForm />
+			<CirculoForm circulo={circuloUpdate}/>
 			</div>
 
 		</section>

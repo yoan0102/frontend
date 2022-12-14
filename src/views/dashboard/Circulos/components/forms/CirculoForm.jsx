@@ -1,5 +1,7 @@
 import { useFormik } from 'formik';
-import * as Yup from 'yup'
+import PropTypes from 'prop-types';
+import * as Yup from 'yup';
+
 import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer } from 'react-leaflet'
 
@@ -22,18 +24,19 @@ const CirculoSchema = Yup.object().shape({
 	normed_capacity6: Yup.number().required(REQUIRED),
 });
 
-function CirculoForm() {
+function CirculoForm({ circulo }) {
+
 	const { addCirculo } = useCirculoContext();
 	const navigate = useNavigate();
 	const form = useFormik({
 		initialValues: {
-			no: 0,
-			name: '',
-			normed_capacity2: 0,
-			normed_capacity3: 0,
-			normed_capacity4: 0,
-			normed_capacity5: 0,
-			normed_capacity6: 0,
+			no: circulo ? circulo?.no: 0,
+			name: circulo ? circulo?.name: '',
+			normed_capacity2: circulo ? circulo?.normed_capacity2: 0,
+			normed_capacity3: circulo ? circulo?.normed_capacity3: 0,
+			normed_capacity4: circulo ? circulo?.normed_capacity4: 0,
+			normed_capacity5: circulo ? circulo?.normed_capacity5: 0,
+			normed_capacity6: circulo ? circulo?.normed_capacity6: 0,
 			/*       latong: [], */
 		},
 		onSubmit: async (values, { resetForm }) => {
@@ -95,7 +98,7 @@ function CirculoForm() {
 							<div className='row align-items-center'>
 								<div className='col-md-10 mb-3'>
 
-									<MapContainer style={{ width: '100%', height: '450px' }} center={[21.72761, -82.834167]} zoom={10} scrollWheelZoom={false}>
+									<MapContainer style={{ width: '100%', height: '450px' }} center={[21.72761, -82.834167]} zoom={10} scrollWheelZoom={true}>
 										<TileLayer
 											attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 											url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -200,6 +203,10 @@ function CirculoForm() {
 
 		</div>
 	);
+}
+
+CirculoForm.propTypes = {
+  circulo: PropTypes.object
 }
 
 export default CirculoForm;

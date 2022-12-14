@@ -9,10 +9,9 @@ import PropTypes from 'prop-types'
 const CirculoContext = createContext()
 
 export const CirculoProvider = ({ children }) => {
+  const { data: circulos } = useQuery({ queryKey: ['circulos'], queryFn: circulosApi })
 
   const queryClient = useQueryClient();
-
-  const { data } = useQuery({ queryKey: ['circulos'], queryFn: circulosApi })
 
   const addCirculo = useMutation({
     mutationFn: circulosApiCreate,
@@ -29,11 +28,19 @@ export const CirculoProvider = ({ children }) => {
     },
   })
 
+  const updateCirculo = useMutation({
+    mutationFn: circulosApiDelete,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['circulos'] })
+    },
+  })
+
   const value = useMemo(() => ({
-    data,
+    circulos,
     addCirculo,
     deleteCirculo,
-  }), [data])
+    updateCirculo,
+  }), [circulos])
   return (
     <CirculoContext.Provider value={value}>
       {children}
