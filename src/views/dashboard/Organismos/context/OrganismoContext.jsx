@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-
-import { useMutation, useQuery, QueryClient } from '@tanstack/react-query';
-import { createContext, useContext, /* useMemo */ } from 'react';
-=======
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createContext, useContext, useMemo } from 'react';
->>>>>>> main
+
 import { organismosApi, organismosApiCreate, organismosApiDelete } from '../service/organismo.service';
 import PropTypes from 'prop-types'
 

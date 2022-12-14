@@ -99,7 +99,7 @@ const OrganismoList = () => {
 		<section className='organismolist '>
 
 			<div className="container">
-			<h2 className='text-center text-secondary p-5'>Listado de Organismos</h2>
+				<h2 className='text-center text-secondary p-5'>Listado de Organismos</h2>
 				<div className='table-responsibe'>
 					<div className="mb-3 d-flex justify-content-between gap-3">
 						<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
@@ -111,13 +111,7 @@ const OrganismoList = () => {
 
 					<DataTable
 						columns={columns}
-<<<<<<< HEAD
-						data={organismos}
-						// title='Listado de Organismos'
-=======
 						data={organismosLocal}
-						// title='Listado de Planillas'
->>>>>>> main
 						pagination
 						highlightOnHover
 						paginationComponentOptions={
