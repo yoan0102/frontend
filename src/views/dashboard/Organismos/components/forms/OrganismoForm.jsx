@@ -1,11 +1,22 @@
 import { useFormik } from "formik"
 import PropTypes from 'prop-types'
+import * as Yup from 'yup';
 
 import { useNavigate } from "react-router-dom"
 
 import { useOrganismoContext } from "../../context/OrganismoContext"
 import Button from "../../../../../common/Button/Button"
 import { ORGANISMOS } from "../../../../../core/config/routes/paths"
+
+const REQUIRED = 'Este campo es requerido';
+
+const OrganismoSchema = Yup.object().shape({
+	name: Yup.string().required(REQUIRED),
+	description: Yup.string().required(REQUIRED),
+	priorizado: Yup.boolean(),
+
+});
+
 
 function OrganismoForm({ organismo }) {
 
@@ -23,8 +34,10 @@ function OrganismoForm({ organismo }) {
       })
       resetForm();
       navigate(ORGANISMOS)
-    }
-  })
+    },
+    validationSchema: OrganismoSchema
+  });
+
 
 
   return (
@@ -51,23 +64,34 @@ function OrganismoForm({ organismo }) {
                     onChange={form.handleChange}
                     value={form.values.name}
                   />
+                  {form.errors.name ? <p>{form.errors.name}</p> : null}
                 </div>
 
                 <div className="col-md-7 mb-3">
 
                   <label >Descripcion</label>
-                  <textarea className="form-control" rows={1} name="description" id="description" placeholder="Escriba una breve descripcion"
+                  <textarea className="form-control" 
+                    rows={1} name="description" 
+                    id="description" 
+                    placeholder="Escriba una breve descripcion"
                     value={form.values.description}
                     onChange={form.handleChange}
                   ></textarea>
+                  {form.errors.description ? <p>{form.errors.description}</p> : null}
                 </div>
 
                 <div className="col-md-2 mb-3">
-                  <input className="form-check form-switch" type="checkbox" role="switch" name="priorizado" id="priorizado"
+                  <input 
+                    className="form-check-input switch-lg" 
+                    type="checkbox" 
+                    role="switch" 
+                    name="priorizado" 
+                    id="priorizado"
                     onChange={form.handleChange}
                     checked={form.priorizado}
                   />
-                  <label className="custom-control-label">Priorizado</label>
+                  <label className="form-label" htmlFor="priorizado">Priorizado</label>
+
                 </div>
               </div>
             </div>
