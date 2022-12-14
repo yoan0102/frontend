@@ -15,6 +15,14 @@ const initialValue = [
 	{
 		id: '3',
 		name: 'Juanito Perez Fitz',
+	},
+	{
+		id: '4',
+		name: 'Petra Sanz Coco',
+	},
+	{
+		id: '5',
+		name: 'Joana Blanco Rubio',
 	}
 ]
 
@@ -169,7 +177,7 @@ const GeneralList = () => {
 						}
 					}
 					fixedHeader
-					fixedHeaderScrollHeight='800px'
+					fixedHeaderScrollHeight='600px'
 					noDataComponent='No hay resultados'
 				/>
 			</div>
