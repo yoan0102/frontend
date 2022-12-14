@@ -6,15 +6,15 @@ import './styles/GeneralList.scss';
 const initialValue = [
 	{
 		id: '1',
-		name: 'John',
+		name: 'Peter Sanz Coco',
 	},
 	{
 		id: '2',
-		name: 'Yoan',
+		name: 'Yoan Blanco Rubio',
 	},
 	{
 		id: '3',
-		name: 'John',
+		name: 'Juanito Perez Fitz',
 	}
 ]
 
@@ -26,14 +26,15 @@ const GeneralList = () => {
 	const searchElements = () => {
 		const elements = initialValue.filter((item) => {
 			if (
-				item.name.includes(search) ||
-				item.id.includes(search)
+				item.name.includes(search) || item.id.includes(search)
 			) {
 				return item
 			}
 		})
 		setUsers(elements)
 	}
+
+	
 
 	useEffect(() => {
 		setUsers(initialValue)
@@ -58,26 +59,92 @@ const GeneralList = () => {
 
 	const columns = [
 		{
-			name: 'id',
+			name: 'No.', /* numero de entrada */
 			selector: row => row.id,
 			sortable: true,
 		},
 		{
-			name: 'Nombre',
+			name: 'Fecha', /* Fecha de creado */
+			selector: row => 'D/M/AA',
+			sortable: true,
+		},
+		{
+			name: 'Nombre del menor', /* Nombre completo */
 			selector: row => row.name,
 			sortable: true,
 
 		},
 		{
-			name: 'Actions',
-			cell: row =>
-				<button className="btn btn-primary btn-sm"
+			name: 'Carnet', /* Canet de identidad */
+			selector: row => '###########',
+			sortable: true,
+
+		},
+		{
+			name: 'Sexo', /* Masculino o Femenino */
+			selector: row => 'F-M',
+			sortable: true,
+		},
+		{
+			name: 'Año', /* Año de vida */
+			selector: row => '2',
+			sortable: true,
+		},
+		{
+			name: 'Nombre del tutot', /* la madre o tutor */
+			selector: row => 'Fulanita Esperanceja ',
+			sortable: true,
+		},
+		{
+			name: 'Parentesco', /* madre padre o tutor */
+			selector: row => 'Madre ',
+			sortable: true,
+		},
+		{
+			name: 'Organismo', /* Localidad */
+			selector: row => 'No se cual',
+			sortable: true,
+		},
+		{
+			name: 'Consejo Popular', /* Consejo Popular */
+			selector: row => 'Abel Santamaria',
+			sortable: true,
+		},
+		{
+			name: 'Solicitud', /* tipo de solicitud, traslado o nueva */
+			selector: row => 'Nueva',
+			sortable: true,
+		},
+		{
+			name: 'Estado', /* Estado de la solicitud (1 de 4) */
+			selector: row => 'propuesta',
+			sortable: true,
+		},
+		{
+			name: 'Matricula', /* circulo en el q esta propuesto o matriculado */
+			selector: row => 'Ismaelillo',
+			sortable: true,
+		},
+		{
+			name: '',
+			cell: row => (
+				<div className='d-flex gap-1 justify-content-center'>
+					<button className="btn btn-warning text-white btn-sm"
+						onClick={() => alert('CLik')}
+					>
+						<i className="bi bi-pencil-square"></i>
+					</button>
+					<button className='btn btn-danger btn-sm' 
 					onClick={() => alert('CLik')}
-				>Editar</button>
+					>
+						<i className="bi bi-trash-fill"></i>
+					</button>
+				</div>
+			)
 			,
 			allowOverflow: true,
 			button: true,
-			width: '56px',
+			width: '100px',
 		},
 	]
 
