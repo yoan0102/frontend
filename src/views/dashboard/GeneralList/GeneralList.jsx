@@ -149,13 +149,13 @@ const GeneralList = () => {
 	]
 
 	return <section className='generallist'>
-		<h2 className='text-center text-primary mt-5 p-5'>Listado de Planillas</h2>
+		<h2 className='text-center text-secondary mt-5 p-5'>Listado de Planillas</h2>
 		<div className="container">
 			<div className='table-responsibe'>
 				<div className="mb-3">
 					<input type="text" className="form-control" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
 				</div>
-				<DataTable
+				<DataTable 
 					columns={columns}
 					data={users}
 					title='Listado de Planillas'
@@ -169,7 +169,7 @@ const GeneralList = () => {
 						}
 					}
 					fixedHeader
-					fixedHeaderScrollHeight='600px'
+					fixedHeaderScrollHeight='800px'
 					noDataComponent='No hay resultados'
 				/>
 			</div>
