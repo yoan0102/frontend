@@ -44,16 +44,27 @@ const Navbar = () => {
           id='navbarNav'
         >
           <ul className='navbar-nav align-center gap-2'>
+
             <li className='nav-item '>
+            <NavLink
+                className='nav-link link text-dark '
+                to={PROPUESTAS_LIST}
+              >
+                <i className="inav bi bi-ui-checks"></i>
+                {/* Listado de Propuestas */}
+              </NavLink>
+              </li>
+
+              <li className='nav-item '>
               <NavLink
                 className='nav-link link text-dark '
                 to={NEW_SUBMISISON}
               >
                 <i className="inav bi bi-plus-lg"></i>
-
                 {/* Nueva Solicitud */}
               </NavLink>
             </li>
+
             <li className='nav-item'>
               <NavLink
                 className='nav-link link text-dark '
@@ -63,6 +74,7 @@ const Navbar = () => {
                 {/* Listado de planillas */}
               </NavLink>
             </li>
+
             <li className='nav-item'>
               <NavLink
                 className='nav-link link text-dark'
@@ -72,6 +84,7 @@ const Navbar = () => {
              {/*   Estadisticas */}
               </NavLink>
             </li>
+
             <li className='nav-item'>
               <NavLink
                 className='nav-link link text-dark'
@@ -81,6 +94,7 @@ const Navbar = () => {
                 {/* Circulos */}
               </NavLink>
             </li>
+
             <li className='nav-item'>
               <NavLink
                 className='nav-link link text-dark'
@@ -102,7 +116,7 @@ const Navbar = () => {
 
               <Link
                 className='nav-link link text-success text-primary '
-                to={PROPUESTAS_LIST}
+                to='/'
               >
                 <i className='inav bi-question-lg'></i>
               </Link>
