@@ -141,7 +141,7 @@ const PropuestasList = () => {
 		},
 	]
 
-	return <section className='generallist'>
+	return <section className='propuestaslist'>
 
 			<div className='container mt-3 '>
 			<h2 className='text-center text-secondary mt-5 p-3'>Propuestas de Asignacion de Matriculas</h2>

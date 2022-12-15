@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 // import { useState } from 'react';
 
 import './styles/Navbar.scss';
-import { CIRCULOS, ESTADISTICAS, GENERAL_LIST, NEW_SUBMISISON, ORGANISMOS, USERS } from '../../core/config/routes/paths';
+import { CIRCULOS, ESTADISTICAS, GENERAL_LIST, PROPUESTAS_LIST , NEW_SUBMISISON, ORGANISMOS, USERS } from '../../core/config/routes/paths';
 
 const Navbar = () => {
   // const [toggle, setToggle] = useState(true);
@@ -102,7 +102,7 @@ const Navbar = () => {
 
               <Link
                 className='nav-link link text-success text-primary '
-                to='/'
+                to={PROPUESTAS_LIST}
               >
                 <i className='inav bi-question-lg'></i>
               </Link>

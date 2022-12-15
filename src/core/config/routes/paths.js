@@ -1,6 +1,7 @@
 export const HOME = '/'
 export const PRIVATE = '/private'
 export const GENERAL_LIST = '/private/listado'
+export const PROPUESTAS_LIST = '/private/propuestas'
 export const NEW_SUBMISISON = '/private/admin/nueva-solicitud'
 export const CIRCULOS = '/private/admin/circulos'
 export const ESTADISTICAS = '/private/admin/estadisticas'
