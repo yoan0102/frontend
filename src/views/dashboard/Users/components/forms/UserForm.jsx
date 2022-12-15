@@ -120,7 +120,7 @@ function UserForm({ user }) {
 								{form.errors.position ? <p>{form.errors.position}</p> : null}
 							</div>
 
-								<div className='col-md-4 mb-3 '>
+								<div className='col-md-4 mb-3 d-flex gap-3'>
 									<div className='custom-control custom-radio custom-control-inline'>
 										<input
 											className='custom-control-input'

@@ -50,4 +50,20 @@ background-color: #36616c ;
 
 	}
 
+.istat{
+		display: flex;
+		justify-content:center;
+		align-items: center;
+		font-size: 4rem;
+		transition: 0.4s all;
 
+		&:hover{
+			font-size:3.5rem;
+		}
+}
+
+.top-card-stats {
+  
+  background-color: rgba(0, 0, 0, 0.2);
+  
+}
