@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component'
 
+import Button from '../../../common/Button/Button';
 import './styles/GeneralList.scss';
 
 const initialValue = [
@@ -137,15 +138,15 @@ const GeneralList = () => {
 			name: '',
 			cell: row => (
 				<div className='d-flex gap-1 justify-content-center'>
-					<button className="btn btn-warning text-white btn-sm"
+					<button className="btn text-white btn-sm"
 						onClick={() => alert('CLik')}
 					>
-						<i className="bi bi-pencil-square"></i>
+						<i className="action-btn bi bi-pencil-square"></i>
 					</button>
-					<button className='btn btn-danger btn-sm' 
+					<button className='btn btn-sm' 
 					onClick={() => alert('CLik')}
 					>
-						<i className="bi bi-trash-fill"></i>
+						<i className="action-btn bi bi-trash-fill"></i>
 					</button>
 				</div>
 			)
@@ -163,9 +164,23 @@ const GeneralList = () => {
 			<div className='card '>
 			<div className='card-body'>
 			<div className='table-responsibe'>
-				<div className="mb-3">
-					<input type="text" className="form-control" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
-				</div>
+
+				<div className="row mb-3 d-flex justify-content-center">
+
+					<div className="col-md-10">
+						<input type="text" className="form-control" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
+						</div>
+
+						<div className="col-md-2 d-flex justify-content-end">
+						
+						<a href='#form' className='btn text-white btn-primary export-btn'>
+							Exportar
+						</a>
+						</div>
+
+					</div>
+
+
 				<DataTable 
 					columns={columns}
 					data={users}

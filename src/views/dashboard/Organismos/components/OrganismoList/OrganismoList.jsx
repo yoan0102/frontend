@@ -78,13 +78,13 @@ const OrganismoList = () => {
 			name: '',
 			cell: row => (
 				<div className='d-flex gap-1 justify-content-center'>
-					<a href='#form' className="btn btn-warning text-white btn-sm"
+					<a href='#form' className="btn text-white btn-sm"
 						onClick={() => editOrganismo(row._id)}
 					>
-						<i className="bi bi-pencil-square"></i>
+						<i className="action-btn bi bi-pencil-square"></i>
 					</a>
-					<button onClick={() => deleteOrganismoId(row._id)} className='btn btn-danger btn-sm'>
-						<i className="bi bi-trash-fill"></i>
+					<button onClick={() => deleteOrganismoId(row._id)} className='btn btn-sm'>
+						<i className="action-btn bi bi-trash-fill"></i>
 					</button>
 				</div>
 			)
