@@ -121,17 +121,13 @@ const PropuestasList = () => {
 		{
 			name: '',
 			cell: row => (
-				<div className='d-flex gap-1 justify-content-center'>
-					<button className="btn text-white btn-sm"
-						onClick={() => alert('CLik')}
-					>
-						<i className="action-btn bi bi-pencil-square"></i>
-					</button>
-					<button className='btn btn-sm' 
-					onClick={() => alert('CLik')}
-					>
-						<i className="action-btn bi bi-trash-fill"></i>
-					</button>
+				<div className='custom-control custom-switch custom-control-inline'>
+					<input
+						className='form-check-input switch-lg'
+						type='checkbox'
+						role='switch'
+					/>
+					<label className='form-label'> </label>
 				</div>
 			)
 			,
@@ -143,7 +139,7 @@ const PropuestasList = () => {
 
 	return <section className='propuestaslist'>
 
-			<div className='container mt-3 '>
+			<div className='container-main mt-3 '>
 			<h2 className='text-center text-secondary mt-5 p-3'>Propuestas de Asignacion de Matriculas</h2>
 			<div className='card '>
 			<div className='card-body'>
@@ -182,6 +178,19 @@ const PropuestasList = () => {
 		</div>
 		</div>
 		</div>
+
+		<article className='d-flex justify-content-center align-items-center gap-5'>
+			<div className='col-md-11 d-flex justify-content-end'>
+									<a
+										href='#'
+										className='btn text-white btn-success generar-btn '
+									>
+										Aprobar
+									</a> 
+
+								</div>
+			</article>
+
 	</section >
 };
 
