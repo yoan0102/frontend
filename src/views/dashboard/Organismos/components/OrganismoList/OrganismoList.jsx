@@ -98,7 +98,7 @@ const OrganismoList = () => {
 	return (
 		<section className='organismolist '>
 
-		<div className='container mt-3 '>
+		<div className='container-main mt-3 '>
 			<h2 className='text-center text-secondary mt-5 p-3'>Listado de Organismos</h2>
 			<div className='card '>
 			<div className='card-body'>

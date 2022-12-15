@@ -142,8 +142,8 @@ const PropuestasList = () => {
 			<div className='container-main mt-3 '>
 			<h2 className='text-center text-secondary mt-5 p-3'>Propuestas de Asignacion de Matriculas</h2>
 			<div className='card '>
-			<div className='card-body'>
-			<div className='table-responsibe'>
+			<div className='card-body '>
+			<div className='table-responsibe '>
 
 				<div className="row mb-3 d-flex justify-content-center">
 
