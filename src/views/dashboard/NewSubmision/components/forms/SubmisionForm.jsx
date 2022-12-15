@@ -6,6 +6,8 @@ import { useSubmisionContext } from '../../context/SubmisionContext.jsx';
 import Button from '../../../../../common/Button/Button';
 import { NEW_SUBMISISON } from '../../../../../core/config/routes/paths';
 
+import ChildrenForm from '../forms/ChildrenForm';
+
 function SubmisionForm() {
 	const { addSubmision } = useSubmisionContext();
 	const navigate = useNavigate();
@@ -46,45 +48,42 @@ function SubmisionForm() {
 									/>
 								</div>
 
-								<div className='col-md-4 mb-3'>
-									<div>
-										<div className='form-check form-check-inline'>
-											<input
-												className='form-check-input'
-												type='radio'
-												name='new'
-												id='new'
-												value='1'
-												
-											/>
-											<label className='form-check-label'>Nueva Solicitud</label>
-										</div>
-										<div className='form-check form-check-inline'>
-											<input
-												className='form-check-input'
-												type='radio'
-												name='traslado'
-												id='traslado'
-												value='2'
-											/>
-											<label className='form-check-label'>Traslado</label>
-										</div>
-									</div>
+								<div className='col-md-4 mb-3 d-flex justify-content-evenly'>
+
+									<div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault1"
+                        checked
+                      />
+                      <label className="form-check-label" htmlFor="flexRadioDefault1">
+                        Nueva Solicitud
+                      </label>
+                    </div>
+
+                    <div className="form-check">
+                      <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                      <label className="form-check-label" htmlFor="flexRadioDefault2">
+                        Traslado
+                      </label>
+                    </div>
+
 								</div>
 
 								<div className='col-md-3 mb-3'>
-									<div>
 										<div className='custom-control custom-switch custom-control-inline'>
 											<input
-												className='custom-control-input'
+												className='form-check-input switch-lg'
 												type='checkbox'
-												name='socialCase'
-												id='socialCase'
-												value='1'
+												role='switch'
+												name='social_case'
+												id='social_case'
 											/>
-											<label className='custom-control-label'>Caso Social</label>
+											<label className='form-label' htmlFor='social_case'>Caso Social</label>
 										</div>
-									</div>
+	
 								</div>
 
 								<div className='col-md-2 mb-3'>
@@ -99,10 +98,18 @@ function SubmisionForm() {
 							</div>
 						</div>
 
-						<p>ChildrenForm</p>
-						<p>ParentForm</p>
-{/* 						<ChildrenForm/>
-						<ParentForm/> */}
+
+						<ChildrenForm/>
+	
+						<div className='col-md-12 mb-3'>
+							<label>Motivo de solicitud</label>
+							<textarea
+								className='form-control'
+								rows={2}
+							>
+								{' '}
+							</textarea>
+						</div>
 
 						<article className='d-flex w-100 justify-content-center align-items-center gap-5'>
 							<Button
