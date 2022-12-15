@@ -126,7 +126,7 @@ const GeneralList = () => {
 		},
 		{
 			name: 'Estado', /* Estado de la solicitud (1 de 4) */
-			selector: row => 'propuesta',
+			selector: row => 'matriculado',
 			sortable: true,
 		},
 		{
