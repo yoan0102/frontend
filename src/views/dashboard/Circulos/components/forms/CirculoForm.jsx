@@ -101,7 +101,8 @@ function CirculoForm({ circulo }) {
 									<MapContainer style={{ width: '100%', height: '450px' }} center={[21.72761, -82.834167]} zoom={10} scrollWheelZoom={true}>
 										<TileLayer
 											attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-											url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+											url="/Tiles/{z}/{x}/{y}.png"
+										/* 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' */
 										/>
 										<LocationMaker />
 									</MapContainer>
