@@ -184,7 +184,6 @@ const GeneralList = () => {
 				<DataTable 
 					columns={columns}
 					data={users}
-					title='Listado de Planillas'
 					pagination
 					paginationComponentOptions={
 						{
