@@ -7,20 +7,21 @@ import './styles/UserList.scss';
 import UserForm from '../forms/UserForm';
 
 const UserList = () => {
-	const { data, deleteUser } = useUserContext()
+	const { users, deleteUser } = useUserContext()
 
-	const [users, setUsers] = useState([])
+	const [usersLocal, setUsersLocal] = useState([])
 	const [search, setSearch] = useState('')
+	const [userUpdate, setuserUpdate] = useState(null)
 
 	useEffect(() => {
-		setUsers(data)
+		setUsersLocal(users)
 		return function cleanUp() {
 		}
-	}, [data])
+	}, [users])
 
 	useEffect(() => {
 		if (search.trim() === '') {
-			setUsers(data)
+			setUsersLocal(users)
 		}
 		return function cleanUp() {
 
@@ -28,16 +29,16 @@ const UserList = () => {
 	}, [search])
 
 	const searchElements = () => {
-		const elements = users.filter((item) => {
+		const elements = usersLocal.filter((item) => {
 			if (
-				item.nick_name.includes(search) || item.first_name.includes(search)|| item.last_name.includes(search) || item.position.includes(search)
+				item.nick_name.includes(search) || item.first_name.includes(search) || item.last_name.includes(search) || item.position.includes(search)
 			) {
 				return item
 			}
 
 			return undefined
 		})
-		setUsers(elements)
+		setUsersLocal(elements)
 	}
 
 	const handleInputChange = (event) => {
@@ -48,6 +49,11 @@ const UserList = () => {
 	const deleteUserId = async (userId) => {
 		await deleteUser.mutate(userId)
 
+	}
+
+	const editUser = async (userId) => {
+		const user = await users.filter(item => item._id === userId)
+		setuserUpdate(user[0])
 	}
 
 	const columns = [
@@ -77,11 +83,11 @@ const UserList = () => {
 			name: '',
 			cell: row => (
 				<div className='d-flex gap-1 justify-content-center'>
-					<button className="btn btn-warning text-white btn-sm"
-						onClick={() => alert('CLik')}
+					<a href='#form' className="btn btn-warning text-white btn-sm"
+						onClick={() => editUser(row._id)}
 					>
 						<i className="bi bi-pencil-square"></i>
-					</button>
+					</a>
 					<button onClick={() => deleteUserId(row._id)} className='btn btn-danger btn-sm'>
 						<i className="bi bi-trash-fill"></i>
 					</button>
@@ -112,8 +118,7 @@ const UserList = () => {
 
 					<DataTable
 						columns={columns}
-						data={users}
-						// title='Listado de usuarios'
+						data={usersLocal}
 						pagination
 						highlightOnHover
 						paginationComponentOptions={
@@ -131,7 +136,7 @@ const UserList = () => {
 				</div>
 				</div>
 				</div>
-				<UserForm />
+				<UserForm user={userUpdate}/>
 			</div>
 
 		</section>

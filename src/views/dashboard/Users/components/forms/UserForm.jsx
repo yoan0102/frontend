@@ -1,4 +1,6 @@
 import { useFormik } from 'formik';
+import PropTypes from 'prop-types'
+import * as Yup from 'yup';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -6,17 +8,30 @@ import { useUserContext } from '../../context/UserContext';
 import Button from '../../../../../common/Button/Button';
 import { USERS } from '../../../../../core/config/routes/paths';
 
-function UserForm() {
+const REQUIRED = 'Este campo es requerido';
+
+const UserSchema = Yup.object().shape({
+	nick_name: Yup.string().required(REQUIRED),
+	first_name: Yup.string().required(REQUIRED),
+	last_name: Yup.string().required(REQUIRED),
+	password: Yup.string().required(REQUIRED),
+	position: Yup.string().required(REQUIRED),
+	role: Yup.string().required(REQUIRED),
+	
+});
+
+function UserForm({ user }) {
+
 	const { addUser } = useUserContext();
 	const navigate = useNavigate();
 	const form = useFormik({
 		initialValues: {
-			nick_name: '',
-			first_name: '',
-			last_name: '',
-			password: '',
-			position: '',
-			role: '',
+			nick_name: user ? user?.nick_name:'',
+			first_name: user ? user?.first_name:'',
+			last_name: user ? user?.last_name:'',
+			password: user ? user?.password:'',
+			position: user ? user?.position:'',
+			role: user ? user?.role:'',
 			/*       razon_remove: '', */
 		},
 		onSubmit: async (values, { resetForm }) => {
@@ -26,6 +41,7 @@ function UserForm() {
 			resetForm();
 			navigate(USERS);
 		},
+		validationSchema: UserSchema
 	});
 
 	return (
@@ -36,8 +52,7 @@ function UserForm() {
 		<h2 className='text-center text-secondary mt-5 p-3'>Nuevo Usuario</h2>
 		 <div className='card '>
 		 		<div className='card-body'>
-					<form onSubmit={form.handleSubmit}>
-
+          <form onSubmit={form.handleSubmit}>
 
 						<div className='form-group'>
 							<div className='row align-items-center'>
@@ -53,6 +68,7 @@ function UserForm() {
 										onChange={form.handleChange}
 										value={form.values.nick_name}
 									/>
+									{form.errors.nick_name ? <p>{form.errors.nick_name}</p> : null}
 								</div>
 
 								<div className='col-md-4 mb-3'>
@@ -67,6 +83,7 @@ function UserForm() {
                     onChange={form.handleChange}
 										value={form.values.first_name}
 									/>
+									{form.errors.first_name ? <p>{form.errors.first_name}</p> : null}
 								</div>
 
                 <div className='col-md-5 mb-3'>
@@ -81,6 +98,7 @@ function UserForm() {
                     onChange={form.handleChange}
 										value={form.values.last_name}
 									/>
+									{form.errors.last_name ? <p>{form.errors.last_name}</p> : null}
 								</div>
 							</div>
 						</div>
@@ -99,6 +117,7 @@ function UserForm() {
                   onChange={form.handleChange}
                   value={form.values.position}
 								/>
+								{form.errors.position ? <p>{form.errors.position}</p> : null}
 							</div>
 
 								<div className='col-md-4 mb-3 '>
@@ -142,6 +161,7 @@ function UserForm() {
                     onChange={form.handleChange}
                     value={form.values.password}
 									/>
+									{form.errors.password ? <p>{form.errors.password}</p> : null}
 								</div>
 
 								<div className='col-md-4 mb-3'>
@@ -157,24 +177,23 @@ function UserForm() {
 							</div>
 						</div>
 
+						<article className="d-flex w-100 justify-content-center align-items-center gap-5">
 
-						<article className='d-flex w-100 justify-content-center align-items-center gap-5'>
-							<Button
-								severity='gray'
-								icon={<i className='text-white bi bi-x-lg'></i>}
-							/>
+              <Button severity='gray' icon={<i className="text-white bi bi-x-lg"></i>} />
 
-							<Button
-								type='submit'
-								severity='primary'
-								icon={<i className='text-white bi bi-check2'></i>}
-							/>
-						</article>
+              <Button type="submit" severity='primary' icon={<i className="text-white bi bi-check2"></i>} />
+            </article>
+
+
 					</form>
 				</div>
 			</div>
 		</div>
 	);
+}
+
+UserForm.propTypes = {
+  user: PropTypes.object
 }
 
 export default UserForm;

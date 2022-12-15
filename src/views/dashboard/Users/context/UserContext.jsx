@@ -1,15 +1,18 @@
-import { useMutation, useQuery, QueryClient } from '@tanstack/react-query';
-import { createContext, useContext, /* useMemo */ } from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { createContext, useContext, useMemo } from 'react';
+
 import { usersApi, usersApiCreate, usersApiDelete } from '../service/user.service';
 import PropTypes from 'prop-types'
 
 
 
 const UserContext = createContext()
-const queryClient = new QueryClient();
+
 
 export const UserProvider = ({ children }) => {
-  const { data } = useQuery({ queryKey: ['users'], queryFn: usersApi })
+  const { data: users } = useQuery({ queryKey: ['users'], queryFn: usersApi })
+
+  const queryClient = useQueryClient();
 
   const addUser = useMutation({
     mutationFn: usersApiCreate,
@@ -21,16 +24,23 @@ export const UserProvider = ({ children }) => {
   const deleteUser = useMutation({
     mutationFn: usersApiDelete,
     onSuccess: () => {
-      // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['users'] })
     },
   })
 
-  const value = {
-    data,
+  const updateUser = useMutation({
+    mutationFn: usersApiDelete,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] })
+    },
+  })
+
+  const value = useMemo(() => ({
+    users,
     addUser,
     deleteUser,
-  }
+    updateUser,
+  }), [users])
   return (
     <UserContext.Provider value={value}>
       {children}

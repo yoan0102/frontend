@@ -16,3 +16,10 @@ export const usersApiDelete = async (userId) => {
   await baseAxios.delete(`/user/${userId}` 
   )
 }
+
+export const usersApiUpdate = async (user) => {
+  await baseAxios.patch(`/users/${user.id}`, {
+    ...user
+  }
+  )
+}
