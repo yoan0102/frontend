@@ -11,7 +11,7 @@ const OrganismoList = () => {
 
 	const [organismosLocal, setOrganismosLocal] = useState([])
 	const [search, setSearch] = useState('')
-	const [organismoUpdate, setorganismoUpdate] = useState(null)
+	const [organismoUpdate, setOrganismoUpdate] = useState(null)
 
 	useEffect(() => {
 		setOrganismosLocal(organismos)
@@ -53,7 +53,7 @@ const OrganismoList = () => {
 
 	const editOrganismo = async (organismoId) => {
 		const organismo = await organismos.filter(item => item._id === organismoId)
-		setorganismoUpdate(organismo[0])
+		setOrganismoUpdate(organismo[0])
 	}
 
 	const columns = [
@@ -98,40 +98,40 @@ const OrganismoList = () => {
 	return (
 		<section className='organismolist '>
 
-		<div className='container-main mt-3 '>
-			<h2 className='text-center text-secondary mt-5 p-3'>Listado de Organismos</h2>
-			<div className='card '>
-			<div className='card-body'>
-				<div className='table-responsibe'>
-					<div className="mb-3 d-flex justify-content-between gap-3">
-						<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
-						<a href='#form' className='btn btn-primary customize-btn'>
-							<i className="bi bi-plus-lg"></i>
-						</a>
+			<div className='container-main mt-3 '>
+				<h2 className='text-center text-secondary mt-5 p-3'>Listado de Organismos</h2>
+				<div className='card '>
+					<div className='card-body'>
+						<div className='table-responsibe'>
+							<div className="mb-3 d-flex justify-content-between gap-3">
+								<input type="text" className="form-control w-25" id="search" placeholder="Busqueda" value={search} onChange={handleInputChange} />
+								<a href='#form' className='btn btn-primary customize-btn'>
+									<i className="bi bi-plus-lg"></i>
+								</a>
+							</div>
+
+
+							<DataTable
+								columns={columns}
+								data={organismosLocal}
+								pagination
+								highlightOnHover
+								paginationComponentOptions={
+									{
+										rowsPerPageText: 'Filas por pagina',
+										rangeSeparatorText: 'de',
+										selectAllRowsItem: true,
+										selectAllRowsItemText: 'Todos'
+									}
+								}
+								fixedHeader
+								fixedHeaderScrollHeight='600px'
+								noDataComponent='No hay resultados'
+							/>
+						</div>
 					</div>
-
-
-					<DataTable
-						columns={columns}
-						data={organismosLocal}
-						pagination
-						highlightOnHover
-						paginationComponentOptions={
-							{
-								rowsPerPageText: 'Filas por pagina',
-								rangeSeparatorText: 'de',
-								selectAllRowsItem: true,
-								selectAllRowsItemText: 'Todos'
-							}
-						}
-						fixedHeader
-						fixedHeaderScrollHeight='600px'
-						noDataComponent='No hay resultados'
-					/>
 				</div>
-			</div>
-			</div>
-			<OrganismoForm organismo={organismoUpdate} />
+				<OrganismoForm organismo={organismoUpdate} />
 			</div>
 
 		</section>

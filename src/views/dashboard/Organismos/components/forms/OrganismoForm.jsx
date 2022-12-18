@@ -11,23 +11,24 @@ import { ORGANISMOS } from "../../../../../core/config/routes/paths"
 const REQUIRED = 'Este campo es requerido';
 
 const OrganismoSchema = Yup.object().shape({
-	name: Yup.string().required(REQUIRED),
-	description: Yup.string().required(REQUIRED),
-	priorizado: Yup.boolean(),
+  name: Yup.string().required(REQUIRED),
+  description: Yup.string().required(REQUIRED),
+  priorizado: Yup.boolean(),
 
 });
 
 
 function OrganismoForm({ organismo }) {
 
- 
+
   const { addOrganismo } = useOrganismoContext()
   const navigate = useNavigate()
+
   const form = useFormik({
     initialValues: {
       name: organismo ? organismo?.name : '',
       description: organismo ? organismo?.name : '',
-      priorizado: organismo ? organismo?.name : ''
+      priorizado: organismo ? organismo?.priorizado : false
     },
     onSubmit: async (values, { resetForm }) => {
       await addOrganismo.mutate({
@@ -36,21 +37,21 @@ function OrganismoForm({ organismo }) {
       resetForm();
       navigate(ORGANISMOS)
     },
-    validationSchema: OrganismoSchema
+    // validationSchema: OrganismoSchema
   });
 
 
 
   return (
-		<div
-			id='form'
-			className='container mt-3'
-		>
-		<h2 className='text-center text-secondary mt-5 p-3'>Nuevo Organismo</h2>
-		 <div className='card '>
-		 		<div className='card-body'>
+    <div
+      id='form'
+      className='container mt-3'
+    >
+      <h2 className='text-center text-secondary mt-5 p-3'>Nuevo Organismo</h2>
+      <div className='card '>
+        <div className='card-body'>
           <form onSubmit={form.handleSubmit}>
-            
+
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-md-3 mb-3">
@@ -71,9 +72,9 @@ function OrganismoForm({ organismo }) {
                 <div className="col-md-7 mb-3">
 
                   <label >Descripcion</label>
-                  <textarea className="form-control" 
-                    rows={1} name="description" 
-                    id="description" 
+                  <textarea className="form-control"
+                    rows={1} name="description"
+                    id="description"
                     placeholder="Escriba una breve descripcion"
                     value={form.values.description}
                     onChange={form.handleChange}
@@ -82,11 +83,11 @@ function OrganismoForm({ organismo }) {
                 </div>
 
                 <div className="col-md-2 mb-3">
-                  <input 
-                    className="form-check-input switch-lg" 
-                    type="checkbox" 
-                    role="switch" 
-                    name="priorizado" 
+                  <input
+                    className="form-check-input switch-lg"
+                    type="checkbox"
+                    role="switch"
+                    name="priorizado"
                     id="priorizado"
                     onChange={form.handleChange}
                     checked={form.priorizado}
@@ -105,8 +106,8 @@ function OrganismoForm({ organismo }) {
 
           </form>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
 
   )
 }

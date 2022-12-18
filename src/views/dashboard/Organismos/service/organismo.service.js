@@ -8,6 +8,7 @@ export const organismosApi = async () => {
 
 
 export const organismosApiCreate = async (organismo) => {
+  console.log(organismo);
   const organismoCreated = await baseAxios.post('/organismos', organismo)
   return organismoCreated.data
 }
