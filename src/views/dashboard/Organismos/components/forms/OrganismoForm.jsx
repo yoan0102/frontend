@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { useOrganismoContext } from "../../context/OrganismoContext"
 import Button from "../../../../../common/Button/Button"
 import { ORGANISMOS } from "../../../../../core/config/routes/paths"
+import { useEffect } from "react";
 
 const REQUIRED = 'Este campo es requerido';
 
@@ -37,8 +38,12 @@ function OrganismoForm({ organismo }) {
       resetForm();
       navigate(ORGANISMOS)
     },
-    // validationSchema: OrganismoSchema
+    validationSchema: OrganismoSchema
   });
+
+  useEffect(() => {
+
+  }, [organismo]);
 
 
 
