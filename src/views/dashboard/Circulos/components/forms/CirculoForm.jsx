@@ -30,13 +30,13 @@ function CirculoForm({ circulo }) {
 	const navigate = useNavigate();
 	const form = useFormik({
 		initialValues: {
-			no: circulo ? circulo?.no: 0,
-			name: circulo ? circulo?.name: '',
-			normed_capacity2: circulo ? circulo?.normed_capacity2: 0,
-			normed_capacity3: circulo ? circulo?.normed_capacity3: 0,
-			normed_capacity4: circulo ? circulo?.normed_capacity4: 0,
-			normed_capacity5: circulo ? circulo?.normed_capacity5: 0,
-			normed_capacity6: circulo ? circulo?.normed_capacity6: 0,
+			no: circulo ? circulo?.no : 0,
+			name: circulo ? circulo?.name : '',
+			normed_capacity2: circulo ? circulo?.normed_capacity2 : 0,
+			normed_capacity3: circulo ? circulo?.normed_capacity3 : 0,
+			normed_capacity4: circulo ? circulo?.normed_capacity4 : 0,
+			normed_capacity5: circulo ? circulo?.normed_capacity5 : 0,
+			normed_capacity6: circulo ? circulo?.normed_capacity6 : 0,
 			/*       latong: [], */
 		},
 		onSubmit: async (values, { resetForm }) => {
@@ -55,9 +55,9 @@ function CirculoForm({ circulo }) {
 			id='form'
 			className='container mt-3'
 		>
-		<h2 className='text-center text-secondary mt-5 p-3'>Nuevo Circulo</h2>
-		 <div className='card '>
-		 		<div className='card-body'>
+			<h2 className='text-center text-secondary mt-5 p-3'>Nuevo Circulo</h2>
+			<div className='card '>
+				<div className='card-body'>
 					<form onSubmit={form.handleSubmit}>
 						<div className='form-group'>
 							<div className='row align-items-center'>
@@ -207,7 +207,7 @@ function CirculoForm({ circulo }) {
 }
 
 CirculoForm.propTypes = {
-  circulo: PropTypes.object
+	circulo: PropTypes.object
 }
 
 export default CirculoForm;
