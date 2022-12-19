@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
-import { CIRCULOS, ESTADISTICAS, GENERAL_LIST, PROPUESTAS_LIST, NEW_SUBMISISON, ORGANISMOS, PRIVATE, USERS } from './core/config/routes/paths'
+import { CIRCULOS, ESTADISTICAS, GENERAL_LIST, PROPUESTAS_LIST, NEW_SUBMISISON, ORGANISMOS, PRIVATE, USERS, HELP } from './core/config/routes/paths'
 
 import { AuthContextProvider } from './core/context/authContext'
 
@@ -14,7 +14,8 @@ import { PropuestasList } from './views/dashboard/PropuestasList'
 import { NewSubmision } from './views/dashboard/NewSubmision'
 import { Organismos } from './views/dashboard/Organismos'
 import { Users } from './views/dashboard/Users'
-import {NotFound} from './views/dashboard/NotFound'
+import { NotFound } from './views/dashboard/NotFound'
+import { HelpPage } from './views/dashboard/Help'
 import { HomeScreen } from './views/home'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path={ESTADISTICAS} element={<Estadisticas />} />
             <Route path={ORGANISMOS} element={<Organismos />} />
             <Route path={USERS} element={<Users />} />
+            <Route path={HELP} element={<HelpPage />} />
           </Route>
           <Route path="*" element={<NotFound/>} />
         </Routes>
