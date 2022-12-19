@@ -14,6 +14,7 @@ import { PropuestasList } from './views/dashboard/PropuestasList'
 import { NewSubmision } from './views/dashboard/NewSubmision'
 import { Organismos } from './views/dashboard/Organismos'
 import { Users } from './views/dashboard/Users'
+import {NotFound} from './views/dashboard/NotFound'
 import { HomeScreen } from './views/home'
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
             <Route path={ORGANISMOS} element={<Organismos />} />
             <Route path={USERS} element={<Users />} />
           </Route>
-          <Route path="*" element={<h1>NOT FOUND 404</h1>} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>
     </AuthContextProvider>
